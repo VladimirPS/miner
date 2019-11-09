@@ -1,5 +1,8 @@
 package sample;
 
+import javax.swing.*;
+import java.awt.*;
+
 public enum Statement {
     ZERO,
     ONE,
@@ -14,6 +17,12 @@ public enum Statement {
     CLOSED,
     NOBOMB,
     MARK,
-    OPENED;
-    
+    OPENED,
+    ICON;
+
+    public Image image;
+    public Statement statementInc(){
+        return Statement.values()[this.ordinal()+1];
+    }
+
 }

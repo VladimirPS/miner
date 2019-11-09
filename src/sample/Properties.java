@@ -4,24 +4,27 @@ import java.awt.*;
 
 public class Properties {
 
-    int totalBombs;
-    int totalFlags;
+    static int totalBombs;
+    static int totalFlags;
     public static int ROW;
     public static int COL;
-    public static int IMG_SIZE = 50;
-
-    public int getMENUHEIGHT() {
-        return MENUHEIGHT;
+    public final int IMG_SIZE = 50;
+    public final int MENUHIN = 50;
+    public Properties() {
+        ROW = 10;
+        COL = 10;
+        totalFlags = 10;
+        totalBombs = totalFlags;
     }
-
-    private final int MENUHEIGHT = 50;
-
-    public Properties(int ROW, int COL, int totalBombs) {
-        this.ROW = ROW;
-        this.COL = COL;
-        this.totalBombs = totalBombs;
-        this.totalFlags = totalBombs;
+    void setTotalBombsAndFlags(int x){
+        totalBombs = x;
+        totalFlags = totalBombs;
     }
-
+    int getTotalBombs(){
+        return totalBombs;
+    }
+    public static int getTotalFlags() {
+        return totalFlags;
+    }
 
 }

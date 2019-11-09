@@ -2,38 +2,41 @@ package sample;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.ImageObserver;
 
 public class Field {
     private JPanel panel;
     private JPanel menu;
     private JFrame minerWindow;
+    private Properties properties;
 
     Field() {
-        initPanel();
+
+        properties = new Properties();
+        initMenuPanel(properties);
+        initPanel(properties);
         initMinerWindow();
     }
-    private void initPanel() {
-        Properties properties = new Properties(10, 10, 10);
-        Cell cell = new Cell(0, 0, Statement.CLOSED);
-        menu = new JPanel(){
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                g.drawImage(new ImageIcon("img/" + Statement.BOMB.toString()+ ".png").getImage(),0,0,this);
-            }
-        };
-        menu.setPreferredSize(new Dimension(properties.ROW*properties.IMG_SIZE, properties.getMENUHEIGHT()));
+    private void initPanel(Properties properties) {
         panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 for (int x = 0; x < properties.ROW; x++)
                     for (int y = 0; y < properties.COL; y++)
-                        g.drawImage(cell.getImage(), x * properties.IMG_SIZE, y * properties.IMG_SIZE, this);
+                        g.drawImage(new Cell(1,2,Statement.ONE).statement.image, x * properties.IMG_SIZE, y * properties.IMG_SIZE, this);
             }
         };
         panel.setPreferredSize(new Dimension(properties.ROW * properties.IMG_SIZE, properties.COL * properties.IMG_SIZE));
+    }
+    private void initMenuPanel(Properties properties){
+        menu = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(new ImageIcon("img/" + Statement.ICON.toString()+ ".png").getImage(),0,0,this);
+            }
+        };
+        menu.setPreferredSize(new Dimension(properties.IMG_SIZE, properties.MENUHIN));
     }
     private void initMinerWindow(){
         minerWindow = new JFrame("Miner");
@@ -44,7 +47,6 @@ public class Field {
         minerWindow.setResizable(false);
         minerWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         minerWindow.setLocationRelativeTo(null);
-
     }
 }
 
