@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/img" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -19,6 +22,23 @@
         </SOURCES>
         <jarDirectory url="file://C:/Program Files/Java/jdk-9.0.4/lib/javafx/lib" recursive="false" />
         <jarDirectory url="file://C:/Program Files/Java/jdk-9.0.4/lib/javafx/lib" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/out/artifacts/Miner_jar/Miner.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/out/artifacts/Miner_jar/Miner.jar!/javafx.base" />
+          <root url="jar://$MODULE_DIR$/out/artifacts/Miner_jar/Miner.jar!/javafx.controls" />
+          <root url="jar://$MODULE_DIR$/out/artifacts/Miner_jar/Miner.jar!/javafx.fxml" />
+          <root url="jar://$MODULE_DIR$/out/artifacts/Miner_jar/Miner.jar!/javafx.graphics" />
+          <root url="jar://$MODULE_DIR$/out/artifacts/Miner_jar/Miner.jar!/javafx.media" />
+          <root url="jar://$MODULE_DIR$/out/artifacts/Miner_jar/Miner.jar!/javafx.swing" />
+          <root url="jar://$MODULE_DIR$/out/artifacts/Miner_jar/Miner.jar!/javafx.web" />
+        </SOURCES>
       </library>
     </orderEntry>
   </component>
