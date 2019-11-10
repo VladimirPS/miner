@@ -1,28 +1,28 @@
 package sample;
 
 class CellsArray {
-    public Cell[][] getCellsArray() {
-        return cellsArray;
-    }
 
     private Cell[][] cellsArray;
 
     CellsArray(int ROW, int COL) {
         cellsArray = new Cell[ROW][COL];
-            for (int x = 0; x<ROW;x++)
-                for (int y = 0 ; y < COL; y++)
-                    cellsArray[x][y] = new Cell(x,y,Statement.CLOSED);
+        for (int x = 0; x < ROW; x++)
+            for (int y = 0; y < COL; y++)
+                cellsArray[x][y] = new Cell(x, y, Statement.ZERO);
     }
 
-    Cell getCell(Cell cell) {
-        if (Properties.notOut(cell.x, cell.y))
-            return cellsArray[cell.x][cell.y];
+    Cell getCell (int x, int y) {
+        if (Properties.notOut(x, y))
+            return cellsArray[x][y];
         return null;
     }
 
-    void set(int x, int y, Cell cell) {
-        if (Properties.notOut(cell.x,cell.y))
-            cellsArray[x][y] = cell;
+    void set(int x, int y, Statement statement) {
+        if (Properties.notOut(x, y))
+            cellsArray[x][y].setStatement(statement);
 
+    }
+    public Cell[][] getCellsArray() {
+        return cellsArray;
     }
 }

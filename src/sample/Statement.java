@@ -21,9 +21,6 @@ public enum Statement {
     SETTINGS,
     ICON;
 
-    public Statement statementInc(){
-        return Statement.values()[this.ordinal()+1];
-    }
     public static Image getImage(String s)
     {
         ImageIcon icon = new ImageIcon("img/" + s + ".png");

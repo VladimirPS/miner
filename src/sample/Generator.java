@@ -3,14 +3,18 @@ package sample;
 import java.util.Random;
 
 public class Generator {
+    CellsArray cellsArray;
 
-    Generator() {
-            Properties properties = new Properties();
-            CellsArray cellsArray = new CellsArray(properties.ROW, properties.COL);
-            System.out.println(cellsArray.getCellsArray()[1][1].statement);
-            cellsArray.getCellsArray()[1][1].setStatement(Statement.BOMB);
-            System.out.println(cellsArray.getCellsArray()[1][1].statement);
-
+    Generator(Properties properties) {
+        this.cellsArray = new CellsArray(properties.ROW, properties.COL);
+        for (Cell[] cells : cellsArray.getCellsArray()) {
+            System.out.println("");
+            for (Cell cell1 : cells) {
+                System.out.print(cell1.statement + "\t");
+            }
+        }
 
     }
+
+
 }

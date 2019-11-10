@@ -1,7 +1,6 @@
 package sample;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseListener;
 
 public class Field {
     private JPanel panel;
@@ -11,27 +10,32 @@ public class Field {
 
 
     Field() {
-        properties = new Properties();
+        this.properties = new Properties();
+        Generator generator = new Generator(properties);
+        initMenuPanel(properties);
+        initPanel(properties,generator);
         initMinerWindow();
-        Controller controller = new Controller();
-        panel.addMouseListener(controller);
+        panel.addMouseListener(new Controller(generator.cellsArray,panel));
+
+
+
     }
-    private void initPanel(Properties properties) {
+
+    private void initPanel(Properties properties, Generator generator) {
         panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 for (int x = 0;x<Properties.ROW;x++)
                     for (int y = 0; y<Properties.COL;y++)
-                        g.drawImage(Statement.getImage("closed"),
-                                cell1.x * properties.IMG_SIZE, cell1.y * properties.IMG_SIZE, this);
+                        g.drawImage(generator.cellsArray.getCellsArray()[x][y].image,
+                                x * properties.IMG_SIZE, y * properties.IMG_SIZE, this);
             }
         };
         panel.setPreferredSize(new Dimension(properties.ROW * properties.IMG_SIZE,
                 properties.COL * properties.IMG_SIZE));
+
         }
-
-
 
     private void initMenuPanel(Properties properties) {
         menu = new JPanel() {
@@ -48,19 +52,16 @@ public class Field {
 
     private void initMinerWindow() {
         minerWindow = new JFrame("Miner");
-        initMenuPanel(properties);
-        minerWindow.pack();
-        initPanel(properties);
         minerWindow.add(menu, BorderLayout.PAGE_START);
-        minerWindow.pack();
         minerWindow.add(this.panel);
         minerWindow.pack();
         minerWindow.setVisible(true);
         minerWindow.setResizable(false);
         minerWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         minerWindow.setLocationRelativeTo(null);
+    }
 
     }
-}
+
 
 

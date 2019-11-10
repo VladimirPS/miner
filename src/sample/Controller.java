@@ -9,9 +9,29 @@ import java.awt.event.MouseMotionListener;
 
 public class Controller implements MouseListener, MouseMotionListener {
 
+    CellsArray cellsArray;
+    JPanel panel;
+    Controller(CellsArray cellsArray, JPanel panel){
+        this.cellsArray = cellsArray;
+        this.panel = panel;
+
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        for (Cell[] cells : cellsArray.getCellsArray()) {
+            System.out.println("");
+            for (Cell cell1 : cells) {
+                System.out.print(cell1.statement + "\t");
+            }
+        }   new BombGenerator(cellsArray);
+            panel.repaint();
+        for (Cell[] cells : cellsArray.getCellsArray()) {
+            System.out.println("");
+            for (Cell cell1 : cells) {
+                System.out.print(cell1.statement + "\t");
+            }
+        }
 
 
     }

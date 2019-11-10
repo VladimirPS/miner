@@ -16,8 +16,8 @@ public class Properties extends JFrame {
     public Properties() {
         ROW = 10;
         COL = 10;
-        totalFlags = 10;
-        totalBombs = totalFlags;
+        totalFlags = 15;
+        totalBombs = 12;
     }
     void setTotalBombsAndFlags(int x){
         totalBombs = x;

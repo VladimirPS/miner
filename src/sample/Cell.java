@@ -7,6 +7,11 @@ public class Cell extends JFrame
 {
     int x;
     int y;
+
+    public Statement getStatement() {
+        return statement;
+    }
+
     Statement statement;
 
     public void setImage(Image image) {
@@ -34,5 +39,9 @@ public class Cell extends JFrame
 
     }
 
+    public Statement statementInc(){
+        this.statement= statement.values()[statement.ordinal()+1];
+        return this.statement;
+    }
 
 }
