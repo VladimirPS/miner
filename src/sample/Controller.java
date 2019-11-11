@@ -10,10 +10,12 @@ import java.awt.event.MouseMotionListener;
 public class Controller implements MouseListener, MouseMotionListener {
 
     CellsArray cellsArray;
+    CellsArray cellsArrayUpper;
     JPanel panel;
-    Controller(CellsArray cellsArray, JPanel panel){
+    Controller(CellsArray cellsArray, JPanel panel, CellsArray cellsArrayUpper){
         this.cellsArray = cellsArray;
         this.panel = panel;
+        this.cellsArrayUpper = cellsArrayUpper;
 
     }
 
@@ -25,15 +27,18 @@ public class Controller implements MouseListener, MouseMotionListener {
                 System.out.print(cell1.statement + "\t");
             }
         }   new BombGenerator(cellsArray);
+            cellsArrayUpper.set(e.getX()/50,e.getY()/50, Statement.OPENED);
             panel.repaint();
+
         for (Cell[] cells : cellsArray.getCellsArray()) {
             System.out.println("");
             for (Cell cell1 : cells) {
                 System.out.print(cell1.statement + "\t");
             }
+
         }
 
-
+        panel.removeMouseListener(this);
     }
 
     @Override
@@ -63,6 +68,7 @@ public class Controller implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseMoved(MouseEvent e) {
+
 
     }
 }

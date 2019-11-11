@@ -1,6 +1,8 @@
 package sample;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Field {
     private JPanel panel;
@@ -15,7 +17,15 @@ public class Field {
         initMenuPanel(properties);
         initPanel(properties,generator);
         initMinerWindow();
-        panel.addMouseListener(new Controller(generator.cellsArray,panel));
+        panel.addMouseListener(new Controller(generator.cellsArray,panel, generator.cellsArrayUpper));
+        panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                generator.cellsArrayUpper.set(e.getX()/50,e.getY()/50, Statement.OPENED);
+                panel.repaint();
+            }
+        });
 
 
 
@@ -27,9 +37,12 @@ public class Field {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 for (int x = 0;x<Properties.ROW;x++)
-                    for (int y = 0; y<Properties.COL;y++)
+                    for (int y = 0; y<Properties.COL;y++){
                         g.drawImage(generator.cellsArray.getCellsArray()[x][y].image,
                                 x * properties.IMG_SIZE, y * properties.IMG_SIZE, this);
+                        g.drawImage(generator.cellsArrayUpper.getCellsArray()[x][y].image,
+                            x * properties.IMG_SIZE, y * properties.IMG_SIZE, this);
+                    }
             }
         };
         panel.setPreferredSize(new Dimension(properties.ROW * properties.IMG_SIZE,
