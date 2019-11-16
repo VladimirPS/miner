@@ -3,8 +3,8 @@ package sample;
 import java.util.Random;
 
 public class BombGenerator {
-    BombGenerator(CellsArray cellsArray, int x1, int y1) {
-        for (int q = 0; q < Properties.totalBombs; ) {
+    BombGenerator(CellsArray cellsArray, int x1, int y1, CellsArray cellsArrayUpper) {
+        for (int q = 0; q < Properties.totalBombs;) {
             int x = new Random().nextInt(Properties.ROW);
             int y = new Random().nextInt(Properties.COL);
             if (cellsArray.getCellsArray()[x][y].statement != Statement.BOMB&&x!=x1&&y!=y1) {
@@ -15,6 +15,7 @@ public class BombGenerator {
                         if (Properties.notOut(i, j))
                             if (cellsArray.getCellsArray()[i][j].statement != Statement.BOMB)
                                 cellsArray.set(i, j, cellsArray.getCellsArray()[i][j].statementInc());
+
 
 
             }

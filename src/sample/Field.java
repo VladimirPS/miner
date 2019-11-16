@@ -20,50 +20,6 @@ public class Field {
         initPanel(properties, generator);
         initMinerWindow();
         panel.addMouseListener(controller = new Controller(generator.cellsArray, panel, generator.cellsArrayUpper,generator,properties));
-//        panel.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                super.mouseClicked(e);
-//                if (e.getButton() == MouseEvent.BUTTON1) {
-//                    if (generator.cellsArrayUpper.getCell(e.getX() / 50, e.getY() / 50).statement != Statement.FLAG) {
-//                        generator.cellsArrayUpper.set(e.getX() / 50, e.getY() / 50, Statement.OPENED);
-//
-//                        if (generator.cellsArray.getCell(e.getX() / 50, e.getY() / 50).statement == Statement.BOMB) {
-//                            generator.cellsArray.set(e.getX() / 50, e.getY() / 50, Statement.BOMBED);
-//                            for (int x = 0; x < Properties.ROW; x++)
-//                                for (int y = 0; y < Properties.COL; y++)
-//                                    if (generator.cellsArrayUpper.getCell(x, y).statement == Statement.FLAG &
-//                                            generator.cellsArray.getCell(x, y).statement == Statement.BOMB)
-//                                        generator.cellsArrayUpper.set(e.getX() / 50, e.getY() / 50, Statement.FLAG);
-//                                    else
-//                                        generator.cellsArrayUpper.getCell(x, y).setStatement(Statement.OPENED);
-//
-//                        }
-//                        if (generator.cellsArray.getCell(e.getX() / 50, e.getY() / 50).statement == Statement.ZERO) {
-//                            properties.aroundZero(e.getX() / 50, e.getY() / 50, generator.cellsArrayUpper, generator.cellsArray);
-//                            panel.repaint();
-//                        }
-//                        panel.repaint();
-//                    }
-//                }
-//                if (e.getButton() == MouseEvent.BUTTON3) {
-//                    switch (generator.cellsArrayUpper.getCell(e.getX() / 50, e.getY() / 50).statement) {
-//                        case FLAG:
-//                            generator.cellsArrayUpper.set(e.getX() / 50, e.getY() / 50, Statement.CLOSED);
-//                            panel.repaint();
-//                            break;
-//                        case CLOSED:
-//                            generator.cellsArrayUpper.set(e.getX() / 50, e.getY() / 50, Statement.FLAG);
-//                            panel.repaint();
-//                            break;
-//                    }
-//
-//                }
-//
-//            }
-//
-//        });
-
 
     }
 
