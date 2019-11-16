@@ -4,8 +4,10 @@ class CellsArray {
 
     private Cell[][] cellsArray;
 
+
     CellsArray(int ROW, int COL, Statement statement) {
         cellsArray = new Cell[ROW][COL];
+
         for (int x = 0; x < ROW; x++)
             for (int y = 0; y < COL; y++)
                 cellsArray[x][y] = new Cell(x, y, statement);
@@ -25,4 +27,7 @@ class CellsArray {
     public Cell[][] getCellsArray() {
         return cellsArray;
     }
+
+
+
 }

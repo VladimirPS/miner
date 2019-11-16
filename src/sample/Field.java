@@ -1,4 +1,5 @@
 package sample;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -9,24 +10,59 @@ public class Field {
     private JPanel menu;
     private JFrame minerWindow;
     public Properties properties;
+    Controller controller;
 
 
     Field() {
         this.properties = new Properties();
         Generator generator = new Generator(properties);
         initMenuPanel(properties);
-        initPanel(properties,generator);
+        initPanel(properties, generator);
         initMinerWindow();
-        panel.addMouseListener(new Controller(generator.cellsArray,panel, generator.cellsArrayUpper));
-        panel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                generator.cellsArrayUpper.set(e.getX()/50,e.getY()/50, Statement.OPENED);
-                panel.repaint();
-            }
-        });
-
+        panel.addMouseListener(controller = new Controller(generator.cellsArray, panel, generator.cellsArrayUpper,generator,properties));
+//        panel.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                super.mouseClicked(e);
+//                if (e.getButton() == MouseEvent.BUTTON1) {
+//                    if (generator.cellsArrayUpper.getCell(e.getX() / 50, e.getY() / 50).statement != Statement.FLAG) {
+//                        generator.cellsArrayUpper.set(e.getX() / 50, e.getY() / 50, Statement.OPENED);
+//
+//                        if (generator.cellsArray.getCell(e.getX() / 50, e.getY() / 50).statement == Statement.BOMB) {
+//                            generator.cellsArray.set(e.getX() / 50, e.getY() / 50, Statement.BOMBED);
+//                            for (int x = 0; x < Properties.ROW; x++)
+//                                for (int y = 0; y < Properties.COL; y++)
+//                                    if (generator.cellsArrayUpper.getCell(x, y).statement == Statement.FLAG &
+//                                            generator.cellsArray.getCell(x, y).statement == Statement.BOMB)
+//                                        generator.cellsArrayUpper.set(e.getX() / 50, e.getY() / 50, Statement.FLAG);
+//                                    else
+//                                        generator.cellsArrayUpper.getCell(x, y).setStatement(Statement.OPENED);
+//
+//                        }
+//                        if (generator.cellsArray.getCell(e.getX() / 50, e.getY() / 50).statement == Statement.ZERO) {
+//                            properties.aroundZero(e.getX() / 50, e.getY() / 50, generator.cellsArrayUpper, generator.cellsArray);
+//                            panel.repaint();
+//                        }
+//                        panel.repaint();
+//                    }
+//                }
+//                if (e.getButton() == MouseEvent.BUTTON3) {
+//                    switch (generator.cellsArrayUpper.getCell(e.getX() / 50, e.getY() / 50).statement) {
+//                        case FLAG:
+//                            generator.cellsArrayUpper.set(e.getX() / 50, e.getY() / 50, Statement.CLOSED);
+//                            panel.repaint();
+//                            break;
+//                        case CLOSED:
+//                            generator.cellsArrayUpper.set(e.getX() / 50, e.getY() / 50, Statement.FLAG);
+//                            panel.repaint();
+//                            break;
+//                    }
+//
+//                }
+//
+//            }
+//
+//        });
 
 
     }
@@ -36,19 +72,19 @@ public class Field {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                for (int x = 0;x<Properties.ROW;x++)
-                    for (int y = 0; y<Properties.COL;y++){
+                for (int x = 0; x < Properties.ROW; x++)
+                    for (int y = 0; y < Properties.COL; y++) {
                         g.drawImage(generator.cellsArray.getCellsArray()[x][y].image,
                                 x * properties.IMG_SIZE, y * properties.IMG_SIZE, this);
                         g.drawImage(generator.cellsArrayUpper.getCellsArray()[x][y].image,
-                            x * properties.IMG_SIZE, y * properties.IMG_SIZE, this);
+                                x * properties.IMG_SIZE, y * properties.IMG_SIZE, this);
                     }
             }
         };
         panel.setPreferredSize(new Dimension(properties.ROW * properties.IMG_SIZE,
                 properties.COL * properties.IMG_SIZE));
 
-        }
+    }
 
     private void initMenuPanel(Properties properties) {
         menu = new JPanel() {
@@ -74,7 +110,7 @@ public class Field {
         minerWindow.setLocationRelativeTo(null);
     }
 
-    }
+}
 
 
 
