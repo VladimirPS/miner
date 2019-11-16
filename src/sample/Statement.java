@@ -1,7 +1,13 @@
 package sample;
 
+
+import sun.misc.IOUtils;
+
 import javax.swing.*;
 import java.awt.*;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 
 public enum Statement {
     ZERO,
@@ -23,10 +29,6 @@ public enum Statement {
     SETTINGS,
     ICON;
 
-    public static Image getImage(String s)
-    {
-        ImageIcon icon = new ImageIcon("img/" + s + ".png");
-        return icon.getImage();
-    }
+
 
 }

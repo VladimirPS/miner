@@ -1,8 +1,12 @@
 package sample;
 
+import sun.misc.IOUtils;
+
 import javax.swing.*;
 import java.awt.*;
+import java.io.InputStream;
 import java.lang.reflect.Array;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class Properties extends JFrame {
@@ -19,7 +23,7 @@ public class Properties extends JFrame {
         ROW = 13;
         COL = 15;
         totalFlags = 20;
-        totalBombs = 10;
+        totalBombs = 1;
         this.countClosed = ROW * COL;
     }
 
@@ -59,6 +63,15 @@ public class Properties extends JFrame {
                 break;
 
         }
+    }
+    public Image getImage1(String s) {
+        String filename = "/"+s.toLowerCase()+".png";
+        URL url = getClass().getResource("/" + s.toLowerCase() +".png");
+//        System.out.println(s.toLowerCase());
+//        System.out.println(url);
+//        System.out.println(filename);
+        ImageIcon icon = new ImageIcon(url);
+        return icon.getImage();
     }
 }
 

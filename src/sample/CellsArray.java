@@ -1,16 +1,18 @@
 package sample;
 
+import java.io.IOException;
+
 class CellsArray {
 
     private Cell[][] cellsArray;
 
 
-    CellsArray(int ROW, int COL, Statement statement) {
+    CellsArray(int ROW, int COL, Statement statement, Properties properties) {
         cellsArray = new Cell[ROW][COL];
 
         for (int x = 0; x < ROW; x++)
             for (int y = 0; y < COL; y++)
-                cellsArray[x][y] = new Cell(x, y, statement);
+                cellsArray[x][y] = new Cell(x, y, statement, properties);
     }
 
     Cell getCell (int x, int y) {

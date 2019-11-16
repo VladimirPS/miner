@@ -19,7 +19,9 @@ public class Field {
         initMenuPanel(properties);
         initPanel(properties, generator);
         initMinerWindow();
+//        minerWindow.add(new Button(BorderLayout.CENTER));
         panel.addMouseListener(controller = new Controller(generator.cellsArray, panel, generator.cellsArrayUpper,generator,properties));
+
 
     }
 
@@ -34,6 +36,7 @@ public class Field {
                                 x * properties.IMG_SIZE, y * properties.IMG_SIZE, this);
                         g.drawImage(generator.cellsArrayUpper.getCellsArray()[x][y].image,
                                 x * properties.IMG_SIZE, y * properties.IMG_SIZE, this);
+                        panel.repaint();
                     }
             }
         };
@@ -64,7 +67,7 @@ public class Field {
         minerWindow.setResizable(false);
         minerWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         minerWindow.setLocationRelativeTo(null);
-        minerWindow.setIconImage(Statement.getImage("ICON"));
+//        minerWindow.setIconImage(Statement.getImage("ICON"));
     }
 
 }
