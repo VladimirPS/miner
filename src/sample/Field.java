@@ -64,6 +64,7 @@ public class Field {
         minerWindow.setResizable(false);
         minerWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         minerWindow.setLocationRelativeTo(null);
+        minerWindow.setIconImage(Statement.getImage("ICON"));
     }
 
 }

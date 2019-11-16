@@ -64,12 +64,12 @@ public class Controller implements MouseListener, MouseMotionListener {
                         if (generator.cellsArrayUpper.getCell(e.getX() / 50, e.getY() / 50).statement != Statement.FLAG) {
                             properties.aroundZero(e.getX() / 50, e.getY() / 50, generator.cellsArrayUpper, generator.cellsArray);
                             panel.repaint();
-                            for (Cell[] cells : cellsArrayUpper.getCellsArray()) {
-                                System.out.println("");
-                                for (Cell cell1 : cells) {
-                                    System.out.print(cell1.statement + "\t");
-                                }
-                            }
+//                            for (Cell[] cells : cellsArrayUpper.getCellsArray()) {
+//                                System.out.println("");
+//                                for (Cell cell1 : cells) {
+//                                    System.out.print(cell1.statement + "\t");
+//                                }
+//                            }
                         }
                         break;
                     default:
@@ -96,9 +96,9 @@ public class Controller implements MouseListener, MouseMotionListener {
                 }
                 break;
         }
-        System.out.println(Properties.countClosed);
+//        System.out.println(Properties.countClosed);
             if (Properties.countClosed==Properties.totalBombs){
-                System.out.println("win");
+//                System.out.println("win");
             }
         }
 

@@ -9,12 +9,12 @@ public class Generator {
     Generator(Properties properties) {
         this.cellsArray = new CellsArray(properties.ROW, properties.COL, Statement.ZERO);
         this.cellsArrayUpper = new CellsArray(properties.ROW, properties.COL, Statement.CLOSED);
-        for (Cell[] cells : cellsArray.getCellsArray()) {
-            System.out.println("");
-            for (Cell cell1 : cells) {
-                System.out.print(cell1.statement + "\t");
-            }
-        }
+//        for (Cell[] cells : cellsArray.getCellsArray()) {
+//            System.out.println("");
+//            for (Cell cell1 : cells) {
+//                System.out.print(cell1.statement + "\t");
+//            }
+//        }
 
     }
 

@@ -14,9 +14,10 @@ class CellsArray {
     }
 
     Cell getCell (int x, int y) {
-        if (Properties.notOut(x, y))
+        if (Properties.notOut(x, y)) {
             return cellsArray[x][y];
-        return null;
+        }
+            return null;
     }
 
     void set(int x, int y, Statement statement) {

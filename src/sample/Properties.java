@@ -16,8 +16,8 @@ public class Properties extends JFrame {
     static int countClosed;
 
     public Properties() {
-        ROW = 10;
-        COL = 10;
+        ROW = 13;
+        COL = 15;
         totalFlags = 20;
         totalBombs = 10;
         this.countClosed = ROW * COL;
@@ -37,7 +37,7 @@ public class Properties extends JFrame {
     }
 
     static Boolean notOut(int x, int y) {
-        return x >= 0 && x < COL && y >= 0 && y < ROW;
+        return x >= 0 && x < ROW && y >= 0 && y < COL;
     }
 
     static void aroundZero(int x, int y, CellsArray cellsArrayUpper, CellsArray cellsArray) {

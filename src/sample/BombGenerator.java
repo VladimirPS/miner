@@ -12,11 +12,9 @@ public class BombGenerator {
                 q++;
                 for (int i = x - 1; i <= x + 1; i++)
                     for (int j = y - 1; j <= y + 1; j++)
-                        if (Properties.notOut(i, j))
+                        if (Properties.notOut(i, j)){
                             if (cellsArray.getCellsArray()[i][j].statement != Statement.BOMB)
-                                cellsArray.set(i, j, cellsArray.getCellsArray()[i][j].statementInc());
-
-
+                                cellsArray.set(i, j, cellsArray.getCellsArray()[i][j].statementInc());}
 
             }
         }
