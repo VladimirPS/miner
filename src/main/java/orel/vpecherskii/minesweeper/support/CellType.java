@@ -1,15 +1,7 @@
-package sample;
+package orel.vpecherskii.minesweeper.support;
 
 
-import sun.misc.IOUtils;
-
-import javax.swing.*;
-import java.awt.*;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
-
-public enum Statement {
+public enum CellType {
     ZERO,
     ONE,
     TWO,
@@ -27,8 +19,5 @@ public enum Statement {
     MARK,
     OPENED,
     SETTINGS,
-    ICON;
-
-
-
+    ICON // put this in other place
 }
