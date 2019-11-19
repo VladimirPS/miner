@@ -48,11 +48,12 @@ public class Field {
                                 this
                         );
 
-                    }panel.repaint();
+                    }
             }
         };
         panel.setPreferredSize(new Dimension(properties.ROW * properties.IMG_SIZE,
                 properties.COL * properties.IMG_SIZE));
+
 
     }
 
@@ -61,12 +62,13 @@ public class Field {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(new ImageIcon("img/" + CellType.SETTINGS.toString() + ".png").getImage(), -1, 0, this);
-                g.drawImage(new ImageIcon("img/" + CellType.SETTINGS.toString() + ".png").getImage(), 251, 0, this);
+                g.drawImage(new ImageIcon(properties.getImage1("settings")).getImage(), -1, 0, this);
+                g.drawImage(new ImageIcon(properties.getImage1("settings")).getImage(), 251, 0, this);
 
             }
         };
         menu.setPreferredSize(new Dimension(properties.IMG_SIZE, properties.MENUHIN));
+
     }
 
     private void initMinerWindow() {
@@ -78,6 +80,7 @@ public class Field {
         minerWindow.setResizable(false);
         minerWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         minerWindow.setLocationRelativeTo(null);
+        minerWindow.setIconImage(properties.getImage1("icon"));
     }
 
 }
