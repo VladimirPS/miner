@@ -19,4 +19,5 @@ public enum CellType {
     MARK,
     OPENED,
     SETTINGS,
+    WIN
 }

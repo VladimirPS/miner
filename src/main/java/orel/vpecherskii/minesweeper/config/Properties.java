@@ -21,7 +21,7 @@ public class Properties extends JFrame {
         ROW = 10;
         COL = 10;
         totalFlags = 20;
-        totalBombs = 5;
+        totalBombs = 2;
         this.countClosed = ROW * COL;
     }
 

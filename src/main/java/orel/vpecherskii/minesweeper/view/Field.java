@@ -4,6 +4,7 @@ import orel.vpecherskii.minesweeper.controller.ActionsController;
 import orel.vpecherskii.minesweeper.support.CellType;
 import orel.vpecherskii.minesweeper.config.Properties;
 import orel.vpecherskii.minesweeper.model.FieldModel;
+import orel.vpecherskii.minesweeper.support.GameState;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,6 +15,7 @@ public class Field {
     private JFrame minerWindow;
     private Properties properties = new Properties();
     private ActionsController actionsController;
+
 
 
     public Field() {
@@ -27,6 +29,7 @@ public class Field {
         this.initPanel(properties, fieldModel);
         this.initMinerWindow();
         panel.addMouseListener(actionsController = new ActionsController( panel, fieldModel, properties));
+
     }
 
     private void initPanel(Properties properties, FieldModel fieldModel) {
@@ -37,6 +40,7 @@ public class Field {
                 for (int x = 0; x < properties.ROW; x++)
                     for (int y = 0; y < properties.COL; y++) {
                         //rem first call
+
                         g.drawImage(
                                 fieldModel.getCellsArray().getCellsArray()[x][y].image,
                                 x * properties.IMG_SIZE, y * properties.IMG_SIZE,
@@ -48,8 +52,9 @@ public class Field {
                                 this
                         );
 
-                    }
-            }
+
+
+            }}
         };
         panel.setPreferredSize(new Dimension(properties.ROW * properties.IMG_SIZE,
                 properties.COL * properties.IMG_SIZE));
