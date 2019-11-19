@@ -18,8 +18,8 @@ public class Properties extends JFrame {
     public static int countClosed;
 
     public Properties() {
-        ROW = 13;
-        COL = 15;
+        ROW = 10;
+        COL = 10;
         totalFlags = 20;
         totalBombs = 1;
         this.countClosed = ROW * COL;

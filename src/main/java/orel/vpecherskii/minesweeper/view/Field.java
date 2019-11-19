@@ -24,8 +24,7 @@ public class Field {
     private void initialize() {
         FieldModel fieldModel = new FieldModel(properties);
         this.initMenuPanel(properties);
-        this.initPanel(properti
-                es, fieldModel);
+        this.initPanel(properties, fieldModel);
         this.initMinerWindow();
         panel.addMouseListener(actionsController = new ActionsController( panel, fieldModel, properties));
     }
@@ -35,8 +34,8 @@ public class Field {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                for (int x = 0; x < Properties.ROW; x++)
-                    for (int y = 0; y < Properties.COL; y++) {
+                for (int x = 0; x < properties.ROW; x++)
+                    for (int y = 0; y < properties.COL; y++) {
                         //rem first call
                         g.drawImage(
                                 fieldModel.getCellsArray().getCellsArray()[x][y].image,
@@ -48,8 +47,8 @@ public class Field {
                                 x * properties.IMG_SIZE, y * properties.IMG_SIZE,
                                 this
                         );
-                        panel.repaint();
-                    }
+
+                    }panel.repaint();
             }
         };
         panel.setPreferredSize(new Dimension(properties.ROW * properties.IMG_SIZE,
