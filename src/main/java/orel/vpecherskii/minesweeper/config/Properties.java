@@ -64,8 +64,8 @@ public class Properties extends JFrame {
     }
 
     public Image getImage1(String s) {
-        String filename = "/" + s.toLowerCase() + ".png";
-        URL url = getClass().getResource("/" + s.toLowerCase() + ".png");
+        String filename = "/img" + s.toLowerCase() + ".png";
+        URL url = getClass().getResource("/img/" + s.toLowerCase() + ".png");
         ImageIcon icon = new ImageIcon(url);
         return icon.getImage();
     }
