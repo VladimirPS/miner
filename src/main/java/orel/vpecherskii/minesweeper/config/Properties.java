@@ -18,10 +18,10 @@ public class Properties extends JFrame {
     public static int countClosed;
 
     public Properties() {
-        ROW = 13;
-        COL = 15;
+        ROW = 10;
+        COL = 10;
         totalFlags = 20;
-        totalBombs = 1;
+        totalBombs = 2;
         this.countClosed = ROW * COL;
     }
 
@@ -64,8 +64,8 @@ public class Properties extends JFrame {
     }
 
     public Image getImage1(String s) {
-        String filename = "/" + s.toLowerCase() + ".png";
-        URL url = getClass().getResource("/" + s.toLowerCase() + ".png");
+        String filename = "/img" + s.toLowerCase() + ".png";
+        URL url = getClass().getResource("/img/" + s.toLowerCase() + ".png");
         ImageIcon icon = new ImageIcon(url);
         return icon.getImage();
     }

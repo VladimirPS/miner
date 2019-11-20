@@ -4,6 +4,7 @@ import orel.vpecherskii.minesweeper.controller.ActionsController;
 import orel.vpecherskii.minesweeper.support.CellType;
 import orel.vpecherskii.minesweeper.config.Properties;
 import orel.vpecherskii.minesweeper.model.FieldModel;
+import orel.vpecherskii.minesweeper.support.GameState;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +17,7 @@ public class Field {
     private ActionsController actionsController;
 
 
+
     public Field() {
         initialize();
 
@@ -24,10 +26,10 @@ public class Field {
     private void initialize() {
         FieldModel fieldModel = new FieldModel(properties);
         this.initMenuPanel(properties);
-        this.initPanel(properti
-                es, fieldModel);
+        this.initPanel(properties, fieldModel);
         this.initMinerWindow();
         panel.addMouseListener(actionsController = new ActionsController( panel, fieldModel, properties));
+
     }
 
     private void initPanel(Properties properties, FieldModel fieldModel) {
@@ -35,9 +37,10 @@ public class Field {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                for (int x = 0; x < Properties.ROW; x++)
-                    for (int y = 0; y < Properties.COL; y++) {
+                for (int x = 0; x < properties.ROW; x++)
+                    for (int y = 0; y < properties.COL; y++) {
                         //rem first call
+
                         g.drawImage(
                                 fieldModel.getCellsArray().getCellsArray()[x][y].image,
                                 x * properties.IMG_SIZE, y * properties.IMG_SIZE,
@@ -48,12 +51,14 @@ public class Field {
                                 x * properties.IMG_SIZE, y * properties.IMG_SIZE,
                                 this
                         );
-                        panel.repaint();
-                    }
-            }
+
+
+
+            }}
         };
         panel.setPreferredSize(new Dimension(properties.ROW * properties.IMG_SIZE,
                 properties.COL * properties.IMG_SIZE));
+
 
     }
 
@@ -62,12 +67,13 @@ public class Field {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(new ImageIcon("img/" + CellType.SETTINGS.toString() + ".png").getImage(), -1, 0, this);
-                g.drawImage(new ImageIcon("img/" + CellType.SETTINGS.toString() + ".png").getImage(), 251, 0, this);
+                g.drawImage(new ImageIcon(properties.getImage1("settings")).getImage(), -1, 0, this);
+                g.drawImage(new ImageIcon(properties.getImage1("settings")).getImage(), 251, 0, this);
 
             }
         };
         menu.setPreferredSize(new Dimension(properties.IMG_SIZE, properties.MENUHIN));
+
     }
 
     private void initMinerWindow() {
@@ -79,6 +85,7 @@ public class Field {
         minerWindow.setResizable(false);
         minerWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         minerWindow.setLocationRelativeTo(null);
+        minerWindow.setIconImage(properties.getImage1("icon"));
     }
 
 }

@@ -1,14 +1,18 @@
 package orel.vpecherskii.minesweeper.controller;
 
+import com.sun.prism.Graphics;
 import orel.vpecherskii.minesweeper.config.Properties;
 import orel.vpecherskii.minesweeper.model.FieldModel;
 import orel.vpecherskii.minesweeper.support.CellLevel;
 import orel.vpecherskii.minesweeper.support.CellType;
+import orel.vpecherskii.minesweeper.support.GameState;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.image.ImageObserver;
 import java.util.Random;
 
 public class ActionsController implements MouseListener, MouseMotionListener {
@@ -26,6 +30,7 @@ public class ActionsController implements MouseListener, MouseMotionListener {
     }
 
     private void generateBombs(int x1, int y1) {
+        GameState.setGameState(GameState.PLAYING);
         for (int q = 0; q < Properties.totalBombs; ) {
             int x = new Random().nextInt(Properties.ROW);
             int y = new Random().nextInt(Properties.COL);
@@ -67,6 +72,7 @@ public class ActionsController implements MouseListener, MouseMotionListener {
                                 fieldModel.getCellsArray().set(e.getX() / 50, e.getY() / 50, CellType.BOMBED);
                                 fieldModel.getCellsArrayUpper().set(e.getX() / 50, e.getY() / 50, CellType.OPENED);
                                 Properties.countClosed--;
+                                GameState.setGameState(GameState.LOSE);
                                 for (int x = 0; x < Properties.ROW; x++) {
                                     for (int y = 0; y < Properties.COL; y++) {
                                         if
@@ -115,9 +121,8 @@ public class ActionsController implements MouseListener, MouseMotionListener {
             }
 
             if (Properties.countClosed == Properties.totalBombs) {
-                for (int q = 0; q < Properties.ROW; q++)
-                    for (int a = 0; a < Properties.COL; a++)
-                        fieldModel.getCells(CellLevel.BACK).set(q, a, CellType.SIX);
+                GameState.setGameState(GameState.WIN);
+                fieldModel.getCellsArray().set(5, 5, CellType.WIN);
                 panel.repaint();
             }
         }

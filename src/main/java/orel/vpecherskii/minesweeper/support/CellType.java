@@ -19,5 +19,5 @@ public enum CellType {
     MARK,
     OPENED,
     SETTINGS,
-    ICON // put this in other place
+    WIN
 }
