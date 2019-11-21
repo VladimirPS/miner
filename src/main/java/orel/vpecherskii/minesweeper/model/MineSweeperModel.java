@@ -6,13 +6,17 @@ import orel.vpecherskii.minesweeper.support.CellLevel;
 
 import java.awt.event.MouseEvent;
 
-public class FieldModel {
+public class MineSweeperModel {
     private CellsArray cellsArray;
     private CellsArray cellsArrayUpper;
 
-    public FieldModel(Properties properties) {
-        this.cellsArray = new CellsArray(properties.ROW, properties.COL, CellType.ZERO, properties);
-        this.cellsArrayUpper = new CellsArray(properties.ROW, properties.COL, CellType.CLOSED, properties);
+    public MineSweeperModel() {
+       reInitialize();
+    }
+
+    public void reInitialize(){
+        this.cellsArray = new CellsArray(Properties.ROW, Properties.COL, CellType.ZERO);
+        this.cellsArrayUpper = new CellsArray(Properties.ROW, Properties.COL, CellType.CLOSED);
     }
 
     public CellsArray getCellsArray() {
