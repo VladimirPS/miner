@@ -1,74 +1,33 @@
 package orel.vpecherskii.minesweeper.config;
 
-import orel.vpecherskii.minesweeper.model.CellsArray;
-import orel.vpecherskii.minesweeper.support.CellType;
+public class Properties {
+    public static final String SETTINGS_IMG = "settings";
+    public static final String ICON_IMG = "icon";
+    public static final String SETTINGS_LABEL = "Settings";
+    public static final String SETTINGS_DIFFICULTY_LABEL_EASY = "Easy";
+    public static final String SETTINGS_DIFFICULTY_LABEL_SUPER_HARD_VOVA = "XXL";
+    private static Properties instance;
+    public static final String WINDOW_NAME = "Minesweeper";
+    public static int ROW = 10;
+    public static  int COL = 10;
+    public static final int totalFlags = 20;
+    public static final int totalBombs = 4;
+    public static final int IMG_SIZE = 50;
+    public static final int MENUHIN = 40;
+    public static int countClosed = ROW * COL;
 
-import javax.swing.*;
-import java.awt.*;
-import java.net.URL;
 
-public class Properties extends JFrame {
-
-    public static int totalBombs;
-    static int totalFlags;
-    public static int ROW;
-    public static int COL;
-    public final int IMG_SIZE = 50;
-    public final int MENUHIN = 40;
-    public static int countClosed;
-
-    public Properties() {
-        ROW = 10;
-        COL = 10;
-        totalFlags = 20;
-        totalBombs = 2;
-        this.countClosed = ROW * COL;
-    }
-
-    void setTotalBombsAndFlags(int x) {
-        totalBombs = x;
-        totalFlags = totalBombs;
-    }
-
-    int getTotalBombs() {
-        return totalBombs;
-    }
-
-    public static int getTotalFlags() {
-        return totalFlags;
-    }
-
-    public static Boolean notOut(int x, int y) {
-        return x >= 0 && x < ROW && y >= 0 && y < COL;
-    }
-
-    public static void fillCellsAroundZero(int x, int y, CellsArray cellsArrayUpper, CellsArray cellsArray) {
-        switch (cellsArray.getCell(x, y).cellType) {
-            case ZERO:
-                for (int i = x - 1; i <= x + 1; i++)
-                    for (int j = y - 1; j <= y + 1; j++)
-                        if (Properties.notOut(i, j)) {
-                            if (cellsArrayUpper.getCell(i, j).cellType == CellType.CLOSED && cellsArray.getCell(i, j).cellType == CellType.ZERO) {
-                                cellsArrayUpper.getCell(i, j).setCellType(CellType.OPENED);
-                                Properties.countClosed--;
-                                fillCellsAroundZero(i, j, cellsArrayUpper, cellsArray);
-                            }
-                            if (cellsArray.getCell(i, j).cellType != CellType.ZERO && cellsArrayUpper.getCell(i, j).cellType != CellType.OPENED) {
-                                cellsArrayUpper.getCell(i, j).setCellType(CellType.OPENED);
-                                Properties.countClosed--;
-                            }
-                        }
-                break;
-
+    public static Properties getInstance() {
+        if (instance == null) {
+            instance = new Properties();
         }
+        return instance;
     }
 
-    public Image getImage1(String s) {
-        String filename = "/img" + s.toLowerCase() + ".png";
-        URL url = getClass().getResource("/img/" + s.toLowerCase() + ".png");
-        ImageIcon icon = new ImageIcon(url);
-        return icon.getImage();
+    private Properties() {
     }
+
+
 }
 
 
