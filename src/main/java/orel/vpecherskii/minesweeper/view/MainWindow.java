@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
+import static orel.vpecherskii.minesweeper.MinesweeperApp.restart;
+
 public class MainWindow extends JFrame {
     private JPanel panel;
     private JPanel menu;
@@ -54,8 +56,7 @@ public class MainWindow extends JFrame {
                 Properties.COL = 10;
                 Properties.ROW = 10;
                 System.out.println("Changed Settings to EASY");
-                model.reInitialize();
-                panel.repaint();
+                restart();
                 //Add Game restart here
             }
         });
@@ -67,8 +68,7 @@ public class MainWindow extends JFrame {
                 Properties.ROW = 30;
                 System.out.println("Changed Settings to VOLOGHEA");
                 //Add Game restart here
-                model.reInitialize();
-                panel.repaint();
+                restart();
             }
         });
         menu.add(item1);
@@ -83,6 +83,7 @@ public class MainWindow extends JFrame {
                 super.paintComponent(g);
                 for (int x = 0; x < Properties.ROW; x++)
                     for (int y = 0; y < Properties.COL; y++) {
+                        System.out.println("x:" + x + " y:" + y);
                         g.drawImage(
                                 mineSweeperModel.getCellsArray().getCellsArray()[x][y].getImage(),
                                 x * Properties.IMG_SIZE, y * Properties.IMG_SIZE,

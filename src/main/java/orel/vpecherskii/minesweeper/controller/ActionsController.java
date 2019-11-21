@@ -23,6 +23,11 @@ public class ActionsController implements MouseListener, MouseMotionListener {
         this.mineSweeperModel = mineSweeperModel;
     }
 
+    public void restart() {
+        mineSweeperModel.reInitialize();
+
+    }
+
     private void generateBombs(int x1, int y1) {
         for (int q = 0; q < Properties.totalBombs; ) {
             int x = new Random().nextInt(Properties.ROW);

@@ -1,7 +1,6 @@
 package orel.vpecherskii.minesweeper.support;
 
 import orel.vpecherskii.minesweeper.config.Properties;
-import orel.vpecherskii.minesweeper.model.CellsArray;
 
 import static orel.vpecherskii.minesweeper.config.Properties.COL;
 import static orel.vpecherskii.minesweeper.config.Properties.ROW;

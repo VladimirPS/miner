@@ -1,13 +1,12 @@
 package orel.vpecherskii.minesweeper;
 
-import orel.vpecherskii.minesweeper.config.Properties;
 import orel.vpecherskii.minesweeper.model.MineSweeperModel;
 import orel.vpecherskii.minesweeper.view.MainWindow;
 
 public class MinesweeperApp {
 
-    private MineSweeperModel mineSweeperModel = new MineSweeperModel();
-    private MainWindow mainWindow;
+    private static MineSweeperModel mineSweeperModel = new MineSweeperModel();
+    private static MainWindow mainWindow;
 
     public static void main(String[] args) {
         new MinesweeperApp();
@@ -15,6 +14,12 @@ public class MinesweeperApp {
 
     private MinesweeperApp() {
         this.mainWindow = new MainWindow(mineSweeperModel);
+    }
+
+    public static void restart() {
+        mainWindow.dispose();
+        mineSweeperModel.reInitialize();
+        mainWindow = new MainWindow(mineSweeperModel);
     }
 }
 

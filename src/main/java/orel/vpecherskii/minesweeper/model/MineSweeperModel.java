@@ -3,6 +3,7 @@ package orel.vpecherskii.minesweeper.model;
 import orel.vpecherskii.minesweeper.support.CellType;
 import orel.vpecherskii.minesweeper.config.Properties;
 import orel.vpecherskii.minesweeper.support.CellLevel;
+import orel.vpecherskii.minesweeper.support.CellsArray;
 
 import java.awt.event.MouseEvent;
 
@@ -11,7 +12,7 @@ public class MineSweeperModel {
     private CellsArray cellsArrayUpper;
 
     public MineSweeperModel() {
-       reInitialize();
+        reInitialize();
     }
 
     public void reInitialize(){

@@ -1,6 +1,5 @@
-package orel.vpecherskii.minesweeper.model;
+package orel.vpecherskii.minesweeper.support;
 
-import orel.vpecherskii.minesweeper.support.CellType;
 import orel.vpecherskii.minesweeper.view.Cell;
 
 import static orel.vpecherskii.minesweeper.support.Common.notOut;
@@ -10,7 +9,7 @@ public class CellsArray {
     private Cell[][] cellsArray;
 
 
-    CellsArray(int ROW, int COL, CellType cellType) {
+    public CellsArray(int ROW, int COL, CellType cellType) {
         cellsArray = new Cell[ROW][COL];
 
         for (int x = 0; x < ROW; x++)

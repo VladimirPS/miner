@@ -1,12 +1,5 @@
 package orel.vpecherskii.minesweeper.config;
 
-import orel.vpecherskii.minesweeper.model.CellsArray;
-import orel.vpecherskii.minesweeper.support.CellType;
-
-import javax.swing.*;
-import java.awt.*;
-import java.net.URL;
-
 public class Properties {
     public static final String SETTINGS_IMG = "settings";
     public static final String ICON_IMG = "icon";
