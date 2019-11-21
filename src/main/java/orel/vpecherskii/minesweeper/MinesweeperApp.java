@@ -9,7 +9,7 @@ import orel.vpecherskii.minesweeper.support.GameState;
 import javax.swing.*;
 import java.awt.*;
 
-public class Field {
+public class MinesweeperForm {
     private JPanel panel;
     private JPanel menu;
     private JFrame minerWindow;
@@ -18,7 +18,7 @@ public class Field {
 
 
 
-    public Field() {
+    public MinesweeperForm() {
         initialize();
 
     }
