@@ -1,12 +1,14 @@
 package orel.vpecherskii.minesweeper.controller;
 
+import orel.vpecherskii.minesweeper.MinesweeperApp;
 import orel.vpecherskii.minesweeper.config.Properties;
 import orel.vpecherskii.minesweeper.model.MineSweeperModel;
-import orel.vpecherskii.minesweeper.support.CellLevel;
-import orel.vpecherskii.minesweeper.support.CellType;
-import orel.vpecherskii.minesweeper.support.Common;
+import orel.vpecherskii.minesweeper.support.*;
+import orel.vpecherskii.minesweeper.view.MainWindow;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -21,6 +23,8 @@ public class ActionsController implements MouseListener, MouseMotionListener {
     public ActionsController(JPanel panel, MineSweeperModel mineSweeperModel) {
         this.panel = panel;
         this.mineSweeperModel = mineSweeperModel;
+        Properties.countClosed=Properties.COL*Properties.COL;
+
     }
 
     public void restart() {
@@ -48,6 +52,7 @@ public class ActionsController implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+
         // if all cells was clicked ?
         if (Properties.countClosed == Properties.ROW * Properties.COL) {
             this.generateBombs(e.getX() / 50, e.getY() / 50);
@@ -64,8 +69,12 @@ public class ActionsController implements MouseListener, MouseMotionListener {
         if (mineSweeperModel.getCellType(CellLevel.FRONT, e) != CellType.OPENED) {
             switch (e.getButton()) {
                 case (MouseEvent.BUTTON1):
+
                     switch (mineSweeperModel.getCellsArray().getCell(e.getX() / 50, e.getY() / 50).cellType) {
+
                         case BOMB:
+                            GameState.gameState=GameState.LOSE;
+
                             if (mineSweeperModel.getCellType(CellLevel.FRONT, e) != CellType.FLAG) {
                                 mineSweeperModel.getCellsArray().set(e.getX() / 50, e.getY() / 50, CellType.BOMBED);
                                 mineSweeperModel.getCellsArrayUpper().set(e.getX() / 50, e.getY() / 50, CellType.OPENED);
@@ -118,8 +127,39 @@ public class ActionsController implements MouseListener, MouseMotionListener {
             }
 
             if (Properties.countClosed == Properties.totalBombs) {
-                mineSweeperModel.getCellsArray().set(5, 5, CellType.WIN);
-                panel.repaint();
+                    JDialog win = new JDialog(){
+                        @Override
+                        public void paint(Graphics g) {
+                            super.paint(g);
+                            g.drawImage(new ImageLoader().loadImage("win"),0,30,this);
+                        }
+                    };
+                    win.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+                            super.mouseClicked(e);
+                            MinesweeperApp.restart();
+                            win.dispose();
+                        }
+                    });
+                    win.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                    win.setModal(true);
+                    win.setSize(200,200);
+                    win.setLocationRelativeTo(null);
+                    win.setVisible(true);
+                    panel.removeMouseListener(this);
+
+//                for (int x = Properties.ROW/2-2;x<Properties.ROW/2+2;x++)
+//                    for (int y = Properties.COL/2-2;y<Properties.COL/2+2;y++) {
+//                        mineSweeperModel.getCellsArray().set(x, y, CellType.OPENED);
+//                        mineSweeperModel.getCellsArrayUpper().set(x, y, CellType.OPENED);
+//
+//                    }
+//                mineSweeperModel.getCellsArray().set(Properties.ROW/2-2, Properties.COL/2-2, CellType.WIN);
+//                GameState.gameState = GameState.WIN;
+//                panel.repaint();
+
+
             }
         }
 

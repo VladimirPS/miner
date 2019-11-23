@@ -5,16 +5,16 @@ public class Properties {
     public static final String ICON_IMG = "icon";
     public static final String SETTINGS_LABEL = "Settings";
     public static final String SETTINGS_DIFFICULTY_LABEL_EASY = "Easy";
-    public static final String SETTINGS_DIFFICULTY_LABEL_SUPER_HARD_VOVA = "XXL";
+    public static final String SETTINGS_DIFFICULTY_LABEL_HARD = "Hard";
     private static Properties instance;
     public static final String WINDOW_NAME = "Minesweeper";
     public static int ROW = 10;
     public static  int COL = 10;
-    public static final int totalFlags = 20;
-    public static final int totalBombs = 4;
+    public static int totalBombs = 10;
+    public static int totalFlags = totalBombs;
     public static final int IMG_SIZE = 50;
     public static final int MENUHIN = 40;
-    public static int countClosed = ROW * COL;
+    public static  int countClosed;
 
 
     public static Properties getInstance() {
@@ -25,6 +25,7 @@ public class Properties {
     }
 
     private Properties() {
+
     }
 
 

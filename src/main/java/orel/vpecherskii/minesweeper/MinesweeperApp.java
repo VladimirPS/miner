@@ -20,6 +20,7 @@ public class MinesweeperApp {
         mainWindow.dispose();
         mineSweeperModel.reInitialize();
         mainWindow = new MainWindow(mineSweeperModel);
+
     }
 }
 

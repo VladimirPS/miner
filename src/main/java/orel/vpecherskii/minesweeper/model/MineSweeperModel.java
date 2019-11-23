@@ -4,6 +4,7 @@ import orel.vpecherskii.minesweeper.support.CellType;
 import orel.vpecherskii.minesweeper.config.Properties;
 import orel.vpecherskii.minesweeper.support.CellLevel;
 import orel.vpecherskii.minesweeper.support.CellsArray;
+import orel.vpecherskii.minesweeper.support.GameState;
 
 import java.awt.event.MouseEvent;
 
@@ -18,6 +19,8 @@ public class MineSweeperModel {
     public void reInitialize(){
         this.cellsArray = new CellsArray(Properties.ROW, Properties.COL, CellType.ZERO);
         this.cellsArrayUpper = new CellsArray(Properties.ROW, Properties.COL, CellType.CLOSED);
+        GameState.gameState=GameState.PLAYING;
+
     }
 
     public CellsArray getCellsArray() {

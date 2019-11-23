@@ -7,9 +7,7 @@ import orel.vpecherskii.minesweeper.support.ImageLoader;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 
 import static orel.vpecherskii.minesweeper.MinesweeperApp.restart;
 
@@ -47,14 +45,16 @@ public class MainWindow extends JFrame {
 
     private void initMenuBar() {
         this.menuBar = new JMenuBar();
-        JMenu menu = new JMenu(Properties.SETTINGS_LABEL);
+        JMenu menu = new JMenu();
+        menu.setIcon(new ImageIcon(imageLoader.loadImage("settings")));
         JMenuItem item1 = new JMenuItem(Properties.SETTINGS_DIFFICULTY_LABEL_EASY);
-        JMenuItem item2 = new JMenuItem(Properties.SETTINGS_DIFFICULTY_LABEL_SUPER_HARD_VOVA);
+        JMenuItem item2 = new JMenuItem(Properties.SETTINGS_DIFFICULTY_LABEL_HARD);
         item1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Properties.COL = 10;
                 Properties.ROW = 10;
+                Properties.totalBombs=10;
                 System.out.println("Changed Settings to EASY");
                 restart();
                 //Add Game restart here
@@ -64,9 +64,10 @@ public class MainWindow extends JFrame {
         item2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Properties.COL = 20;
-                Properties.ROW = 30;
-                System.out.println("Changed Settings to VOLOGHEA");
+                Properties.COL = 15;
+                Properties.ROW = 15;
+                Properties.totalBombs=20;
+                System.out.println("Changed Settings to Hard");
                 //Add Game restart here
                 restart();
             }
@@ -74,6 +75,14 @@ public class MainWindow extends JFrame {
         menu.add(item1);
         menu.add(item2);
         menuBar.add(menu);
+        menuBar.add(new JLabel(new ImageIcon(imageLoader.loadImage("restart")))).addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                restart();
+            }
+        });
+
     }
 
     private void initGameFieldPanel(MineSweeperModel mineSweeperModel) {
@@ -107,7 +116,7 @@ public class MainWindow extends JFrame {
 
     private void initMinerWindow() {
         this.setJMenuBar(menuBar);
-        this.add(menu, BorderLayout.PAGE_START);
+//        this.add(menu, BorderLayout.PAGE_START);
         this.add(this.panel);
         this.pack();
         this.setResizable(false);
@@ -115,6 +124,7 @@ public class MainWindow extends JFrame {
         this.setLocationRelativeTo(null);
         this.setIconImage(imageLoader.loadImage(Properties.ICON_IMG));
         this.setVisible(true);
+
     }
 
 
