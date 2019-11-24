@@ -106,6 +106,8 @@ public class ActionsController implements MouseListener, MouseMotionListener {
                                 mineSweeperModel.getCellsArrayUpper().set(e.getX() / 50, e.getY() / 50, CellType.OPENED);
                                 Properties.countClosed--;
                                 panel.repaint();
+
+
                             }
                             break;
                     }
@@ -149,15 +151,7 @@ public class ActionsController implements MouseListener, MouseMotionListener {
                     win.setVisible(true);
                     panel.removeMouseListener(this);
 
-//                for (int x = Properties.ROW/2-2;x<Properties.ROW/2+2;x++)
-//                    for (int y = Properties.COL/2-2;y<Properties.COL/2+2;y++) {
-//                        mineSweeperModel.getCellsArray().set(x, y, CellType.OPENED);
-//                        mineSweeperModel.getCellsArrayUpper().set(x, y, CellType.OPENED);
-//
-//                    }
-//                mineSweeperModel.getCellsArray().set(Properties.ROW/2-2, Properties.COL/2-2, CellType.WIN);
-//                GameState.gameState = GameState.WIN;
-//                panel.repaint();
+
 
 
             }
